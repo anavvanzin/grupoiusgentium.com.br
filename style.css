@@ -11,7 +11,9 @@
   --color-surface-2: #F3F1ED;        /* Fundo de superfície secundário */
   --color-primary: #0F1A24;          /* Azul Abissal Imperial (profundo, elegante e sério) */
   --color-primary-hover: #172635;
-  --color-accent: #BFA37A;           /* Ouro Champanhe Pálido refinado */
+  --color-accent: #BFA37A; // Ouro Champanhe Pálido
+  --color-prestige: #8B0000;               // Vermelho Carmim Sorbonne
+  --color-academic-gold: #C5A059;          // Dourado Acadêmico Antigo           /* Ouro Champanhe Pálido refinado */
   --color-accent-hover: #A88D65;
   --color-text: #1C1F22;             /* Grafite escuro para leitura ideal */
   --color-text-muted: #575D63;       /* Cinza médio para descrições */
