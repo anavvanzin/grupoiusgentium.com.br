@@ -1,0 +1,3 @@
+*.generated.mjs
+preview-assets/
+preview-output/
