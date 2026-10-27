@@ -2,7 +2,9 @@
 
 ## Estado da publicação
 
-**Preparado; não publicado.** A tentativa de criar uma versão de prévia no Worker foi recusada com HTTP 403: a conexão Cloudflare não possui um escopo de escrita aceito pelo endpoint. É necessário reconectar com `workers-scripts.write` (ou Workers Editor). Não houve alteração do Worker, de suas rotas, de DNS ou dos assets atuais.
+**Publicado em 27/10/2026 às 00h15 (Brasília).** A conexão autorizada permitiu criar e implantar a versão `68fdf213-c1f7-4f87-8257-0d4f3ef51d81` em 100% do tráfego; deployment `e8eea9e6-38cc-400e-8f4e-22aced09bd7f`. O pacote corresponde ao commit `7e2e8686e72c2a3ad155ba45bc96ea23a9b4a43e`. A versão anterior era `80b328d3-a4f9-4a06-b575-dcf3081cf052`. Rotas e DNS não foram modificados; assets foram mantidos com `keep_assets` e binding ASSETS.
+
+**Rollback:** no Cloudflare, Workers & Pages → `ius-gentium` → Deployments, implantar a versão anterior `80b328d3-a4f9-4a06-b575-dcf3081cf052` em 100% do tráfego. Pela API, criar deployment com `strategy: percentage` e `versions: [{"version_id":"80b328d3-a4f9-4a06-b575-dcf3081cf052","percentage":100}]`. Conferir antes se essa continua sendo a versão de rollback adequada e depois validar o domínio e assets. Não usar `force` para ignorar bloqueios.
 
 O domínio público `grupoiusgentium.com.br` e o domínio `www` são atendidos pelo Cloudflare Worker **ius-gentium**. A produção consultada em 21/10/2026 usa a versão `80b328d3-a4f9-4a06-b575-dcf3081cf052`, publicada em 04/10/2026. Ela é diferente dos HTML antigos da raiz. Não há trigger de Workers Builds conectado a esse Worker. Os workflows GitHub Pages da raiz não atualizam essa produção.
 
@@ -46,9 +48,9 @@ Abrir <http://127.0.0.1:4173/arquivo/saberes-franca-brasil-2026> no computador q
 
 Verificações concluídas: renderização do HTML, busca, redirecionamentos legados, respostas HEAD, preservação das páginas/rotas e dos handlers de assets atuais, nomes corrigidos e varredura de padrões de segredos. O link UFSC retornou HTTP 200 e exibiu a atividade correta.
 
-**Pendências:** teste visual em 320, 390, 768 e 1440 px; teclado/menu mobile; checagem de contraste computado e de console no preview Cloudflare. Os navegadores desta sessão não alcançaram o servidor local. Uma prévia em URL de dados foi recusada pela política do navegador; não foi contornada. Portanto, responsividade e acessibilidade foram implementadas e inspecionadas no código, mas não certificadas visualmente.
+**Validação de 27/10:** prévia Cloudflare conferida visualmente em desktop e largura 390 px; cartazes principal e de inscrições carregaram; console da página do evento sem erros observados. A inicial publicada foi conferida visualmente. Não foi concluída a matriz de 320, 768 e 1440 px, nem a auditoria completa de teclado e contraste computado.
 
-## Continuação do deploy
+## Procedimento original de deploy
 
 1. Reabrir esta branch e reconferir a versão em produção. Se tiver mudado, atualizar a base antes de publicar.
 2. Reconectar Cloudflare com escrita em Workers. Gerar os três módulos com `build.mjs`.
