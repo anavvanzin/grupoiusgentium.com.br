@@ -1,0 +1,21 @@
+import { readFile, writeFile } from 'node:fs/promises';
+const root = new URL('./', import.meta.url);
+const baseline = await readFile(new URL('baseline.mjs',root),'utf8');
+let source = "import { installEvent, callout } from './event.mjs';\n" + baseline;
+const insert = (needle,replacement) => {
+  if(source.split(needle).length !== 2) throw new Error('Expected one patch location: '+needle.slice(0,80));
+  source=source.replace(needle,replacement);
+};
+insert('var assetPaths = [', 'installEvent({ app, archive, layout: () => Layout, jsx: jsxDEV, raw });\nvar assetPaths = [');
+insert('/* @__PURE__ */ jsxDEV("link", { rel: "stylesheet", href: "/site.css" }),', '/* @__PURE__ */ jsxDEV("link", { rel: "stylesheet", href: "/site.css" }),\n      jsxDEV("link", { rel: "stylesheet", href: "/saberes-franca-brasil-2026/event.css" }),');
+insert('          /* @__PURE__ */ jsxDEV("section", { class: "semester-callout",', '          raw(callout),\n          /* @__PURE__ */ jsxDEV("section", { class: "semester-callout",');
+const announcementStart = source.indexOf('app.get("/anuncios",');
+const anchor = '      /* @__PURE__ */ jsxDEV("section", { class: "section-pad", children:';
+const position = source.indexOf(anchor, announcementStart);
+if(position<0) throw new Error('Announcement insertion missing');
+source=source.slice(0,position)+'      raw(callout),\n'+source.slice(position);
+await writeFile(new URL('worker.generated.mjs',root),source);
+const media={};
+for(const name of ['cartaz-final','inscricoes']) media[name]=(await readFile(new URL(`media/${name}.webp`,root))).toString('base64');
+await writeFile(new URL('media.generated.mjs',root),'export const media = '+JSON.stringify(media)+';\n');
+console.log('Worker rebuilt from preserved production bundle; existing assets must be retained.');
