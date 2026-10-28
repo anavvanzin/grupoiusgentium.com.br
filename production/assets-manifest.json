@@ -1,0 +1,192 @@
+{
+  "sourceVersion": "68fdf213-c1f7-4f87-8257-0d4f3ef51d81",
+  "capturedAt": "2026-10-28T20:29:58.309Z",
+  "assets": {
+    "/editais/edital-pibic-2026-2027.pdf": {
+      "contentType": "application/pdf",
+      "size": 33277,
+      "sha256": "bd024e98a4379684c05c8aacd5ccc5bd00858502e5a074dd71097df050611044",
+      "hash": "8199dd8cd325706eee6eeebfe0a1b4ad"
+    },
+    "/logo-120.webp": {
+      "contentType": "image/webp",
+      "size": 3046,
+      "sha256": "3f2f135d1e625d616387293423710c3a37162c1b88442b86facf19934e22a4e3",
+      "hash": "4761fa7e03aa4284ead29caf1f652e8d"
+    },
+    "/logo-300.webp": {
+      "contentType": "image/webp",
+      "size": 20010,
+      "sha256": "2194f4ef83fd489f22fbde21a87a2c6b7a3619891938319b925def7842af5904",
+      "hash": "9a8deeb7c4abce225ba9933f99163c5e"
+    },
+    "/logo-48.webp": {
+      "contentType": "image/webp",
+      "size": 854,
+      "sha256": "48a6a40be7a819684b4bcd753525af345c254ca4da4f97cda25bd3964478da55",
+      "hash": "4e1d1fa8e695fd79188b2fd63c1a9633"
+    },
+    "/semestre-2026-2.css": {
+      "contentType": "text/css",
+      "size": 15392,
+      "sha256": "3fa5589aa71fae9fb75d78d222ae30af82e47211ad11ccd435e88de36253ce61",
+      "hash": "33a4cd443370360b62467ecb1ff9f593"
+    },
+    "/semestre-2026-2/desktop-crosshair.svg": {
+      "contentType": "image/svg+xml",
+      "size": 409,
+      "sha256": "5848aceef1f09ea0db23c77d269a6c1991f9c93cbbb34cee430bd2aae165d79e",
+      "hash": "dc758d3e2fe86c43886c6985f2ec7f88"
+    },
+    "/semestre-2026-2/desktop-crosshair1.svg": {
+      "contentType": "image/svg+xml",
+      "size": 486,
+      "sha256": "27862d5acbf7e49d05b55499eebeacdb12ce8e80643f8419f4a69e982cc9a471",
+      "hash": "8281299f1eb6d886afd976e2843ac8fc"
+    },
+    "/semestre-2026-2/desktop-crosshair2.svg": {
+      "contentType": "image/svg+xml",
+      "size": 423,
+      "sha256": "a448c459fa61b951ea2394ae9518a94d15194f6d262a51644f5b99e09862afa0",
+      "hash": "1cc57a84c93c6cd8e09877e8176672f2"
+    },
+    "/semestre-2026-2/desktop-divider-row.svg": {
+      "contentType": "image/svg+xml",
+      "size": 295,
+      "sha256": "35b632aa8d865c685092efbd9bcf8630c56bc7a4890af8e3bd65e531c0b2dd0c",
+      "hash": "f6f4ce4265f6f01b166b5fa4cc479d89"
+    },
+    "/semestre-2026-2/desktop-eixo-central-tracejado.png": {
+      "contentType": "image/png",
+      "size": 215,
+      "sha256": "91a087cf2f609783dc9a2978e54672107e781b30213e89aa5709ef851205e57d",
+      "hash": "96bea5853b3095f3af957b2eb1a6d022"
+    },
+    "/semestre-2026-2/desktop-eixo-logistica.png": {
+      "contentType": "image/png",
+      "size": 189,
+      "sha256": "ecf966fb44f88cc21ecb514c8b7bd1696b07121eeebe08ca2bc259696e137b40",
+      "hash": "dfb8e5e895a2cfd847b4ac5fcfcbf795"
+    },
+    "/semestre-2026-2/desktop-ellipse.svg": {
+      "contentType": "image/svg+xml",
+      "size": 227,
+      "sha256": "db170899d99d4b77c7d999419cdeac3124dc84af4a65457c9de500392be0fb8e",
+      "hash": "fc8b518329ea2569db21de6be3e45ef4"
+    },
+    "/semestre-2026-2/desktop-ellipse1.svg": {
+      "contentType": "image/svg+xml",
+      "size": 238,
+      "sha256": "bb923be7b35a6bb0a1c50742b29fa55ee9f483c21dc3e8fba9325c5404256379",
+      "hash": "79871503ca1355d4339ce68b4b14e9fc"
+    },
+    "/semestre-2026-2/desktop-ellipse2.png": {
+      "contentType": "image/png",
+      "size": 1981,
+      "sha256": "66e259957430a6d6f85c028025cf887c12d5f380f9c698a4804a7eb20012aa64",
+      "hash": "cc3846a0b8af9e1dda8b611c75530539"
+    },
+    "/semestre-2026-2/desktop-header-divider.svg": {
+      "contentType": "image/svg+xml",
+      "size": 269,
+      "sha256": "25c7baa4d2af1fd56ebd95ee730f4afebb40ed9fe7babf4f7c7e9b25cfb43dae",
+      "hash": "6ed3e8294229a8488198d00eca9e3f25"
+    },
+    "/semestre-2026-2/desktop-line.svg": {
+      "contentType": "image/svg+xml",
+      "size": 256,
+      "sha256": "03ebd872b3f329fc74e4c10883422f81bbb5c466860e8fc3716ba27c356ed197",
+      "hash": "a7196b76ce7d5a062e2aa8b75171a764"
+    },
+    "/semestre-2026-2/desktop-line1.svg": {
+      "contentType": "image/svg+xml",
+      "size": 256,
+      "sha256": "15fd5d37a21f2153bee12ceb675f36dc4e4ca861b4a3ca806e825aac3d41eeb0",
+      "hash": "d2569c1355309e9586b86924fa277b20"
+    },
+    "/semestre-2026-2/desktop-line2.svg": {
+      "contentType": "image/svg+xml",
+      "size": 235,
+      "sha256": "72901ae2dcc21aae939dcd8072df6a48258b2f8089f12aa99c197108a04a3b6a",
+      "hash": "049a0fc206450a8c63e7c4745afd7869"
+    },
+    "/semestre-2026-2/desktop-line3.svg": {
+      "contentType": "image/svg+xml",
+      "size": 235,
+      "sha256": "72901ae2dcc21aae939dcd8072df6a48258b2f8089f12aa99c197108a04a3b6a",
+      "hash": "049a0fc206450a8c63e7c4745afd7869"
+    },
+    "/semestre-2026-2/mobile-crosshair.svg": {
+      "contentType": "image/svg+xml",
+      "size": 459,
+      "sha256": "46752366c9124e84f460e3046f007b3f5947344f7b7833ef9de5bbf8751b7fec",
+      "hash": "d7722e7cbda9a35b7ddec306f37f4060"
+    },
+    "/semestre-2026-2/mobile-ellipse.svg": {
+      "contentType": "image/svg+xml",
+      "size": 227,
+      "sha256": "77257aa9239ca608a904c94e21eb8a917689c2c685525cd2775172db5b2ad9af",
+      "hash": "2720397d71893ae5f424285db53e8034"
+    },
+    "/semestre-2026-2/mobile-ellipse1.svg": {
+      "contentType": "image/svg+xml",
+      "size": 238,
+      "sha256": "1876f1099772f50d10332bcc5b7c719d941f34203bd3112ab5af4d91f2c06aae",
+      "hash": "3ee11abd9bcbcb8d2b125b0568b4ee65"
+    },
+    "/semestre-2026-2/mobile-ellipse2.png": {
+      "contentType": "image/png",
+      "size": 1466,
+      "sha256": "c4a074824af8133c26b34df66c009fb47d9ccf18df744677fa0e7fb1812dba3d",
+      "hash": "3fa704b459381d56280217b436ccd279"
+    },
+    "/semestre-2026-2/mobile-header-divider.svg": {
+      "contentType": "image/svg+xml",
+      "size": 266,
+      "sha256": "8c3d370984204a324744147e0ac844ff0c534fb035aed08bfb75190612778746",
+      "hash": "e5c64f9a63f4a26ef68f863bbf100641"
+    },
+    "/semestre-2026-2/mobile-line.svg": {
+      "contentType": "image/svg+xml",
+      "size": 256,
+      "sha256": "93651a545a24767be29352ef44e640ad15471460167a77d09bf38ac20e468178",
+      "hash": "6f6cfe5a552a7ddb7f331dade408a996"
+    },
+    "/semestre-2026-2/mobile-line1.svg": {
+      "contentType": "image/svg+xml",
+      "size": 256,
+      "sha256": "d3c94f3d7ac3417ef73a77dd35d069df108d3a4a91beed67cf0057470c423592",
+      "hash": "77490d297aad05ddf2d2063da7c9e7eb"
+    },
+    "/semestre-2026-2/mobile-line2.svg": {
+      "contentType": "image/svg+xml",
+      "size": 232,
+      "sha256": "66c9db2a81a0a8a4625915a739dbf6d9c42071deb3d110778842896f947d565f",
+      "hash": "e93f4c6d87533c7d4aae63bf49217bcb"
+    },
+    "/semestre-2026-2/mobile-line3.svg": {
+      "contentType": "image/svg+xml",
+      "size": 232,
+      "sha256": "66c9db2a81a0a8a4625915a739dbf6d9c42071deb3d110778842896f947d565f",
+      "hash": "e93f4c6d87533c7d4aae63bf49217bcb"
+    },
+    "/semestre-2026-2/mobile-section-divider.svg": {
+      "contentType": "image/svg+xml",
+      "size": 267,
+      "sha256": "928176d13a593e82e9d9177ca2a8b94465d76c747d25b4fc80fa198bc6cda263",
+      "hash": "a391ff911aadff7f03476552539b47fb"
+    },
+    "/site.css": {
+      "contentType": "text/css",
+      "size": 45282,
+      "sha256": "6d1beb8c215f19c80d33956248e965b9b9cb7e6d6cd00226d9037527d75dc640",
+      "hash": "94a9ebd66a78d6cc698494b95315c15a"
+    },
+    "/site.js": {
+      "contentType": "text/javascript",
+      "size": 8731,
+      "sha256": "e971f78fa5a489e1838c51691bb4e10ba2a9d71dddd2e5dfb71e81c62f5dc37c",
+      "hash": "bb5587efb8c2a329d4ed070063674214"
+    }
+  }
+}

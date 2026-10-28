@@ -11,14 +11,18 @@ Em 28/10 às 20:07:57 UTC, a versão `68fdf213-c1f7-4f87-8257-0d4f3ef51d81` foi 
 - Worker `ius-gentium`; branch `main`; root `/production`.
 - Build: `node build.mjs && node verify.mjs`.
 - Deploy: `node deploy.mjs`. Não usar autodetecção nem assets da raiz.
-- O script envia somente os três módulos compilados e usa o token já provisionado pelo Workers Builds. Não cria nem imprime credenciais.
-- Preserva `ASSETS`, `keep_assets: true` e Worker-first; testa preview, conteúdo, hashes dos assets gerais e do semestre, fontes inacessíveis e commit main atual antes de promover.
-- `keep_assets` não tem seletor de versão. Se os hashes não coincidirem após rollback, a promoção é bloqueada. Não ignorar esse teste: reconstruir os assets a partir da versão boa.
-- O repositório preserva o bundle, mas não todos os fontes TypeScript e assets originais.
+- O script envia os três módulos compilados e um manifesto explícito dos assets públicos. Usa o token já provisionado pelo Workers Builds; não cria nem imprime credenciais.
+- `public-assets/` contém **31 arquivos, 136.205 bytes** recuperados da prévia imutável da versão boa `68fdf213-c1f7-4f87-8257-0d4f3ef51d81` e comparados byte a byte com o domínio público: sete assets gerais e 24 assets do semestre referenciados pelo HTML. Os CSS foram inspecionados por `url()` e `@import`; não acrescentaram dependências locais. `assets-manifest.json` registra caminhos, tipos, tamanhos e hashes SHA-256 completos.
+- A sessão oficial de assets recebe apenas esse manifesto. Cada bucket solicitado é enviado em base64 com seu MIME; o JWT de conclusão é usado somente em memória em `metadata.assets.jwt`. Não se usa `keep_assets`: ele herda o último upload, inclusive após um rollback, e o teste real `fbceb008-cad6-4bda-969d-4b688bb2ac2f` bloqueou essa herança incorreta sem alterar produção.
+- Os identificadores de upload seguem o [exemplo oficial TypeScript](https://github.com/cloudflare/cloudflare-typescript/blob/main/examples/workers/script-with-assets-upload.ts): SHA-256 de `base64(bytes) + extensão sem ponto`, truncado a 32 caracteres hexadecimais. O SHA-256 completo dos bytes é verificado separadamente para integridade. Wrangler usa BLAKE3 para seus identificadores; não dependemos da deduplicação com uploads antigos.
+- Preserva `ASSETS` e Worker-first; rejeita arquivos fora da lista, symlinks, conteúdo/tipo/tamanho incorretos, mudanças de runtime/bindings, previews de versão desativados, builds antigos e produção alterada durante a validação. Compara o snapshot à produção antes dos uploads, testa a versão candidata por preview e só então promove 100%.
+- Após a promoção, lê o deployment e testa os dois domínios: páginas institucionais, evento, busca, 31 assets preservados, três assets do evento e exclusão dos fontes.
+- O repositório preserva o bundle e os assets públicos necessários, mas não todos os fontes TypeScript originais. Alterações intencionais de assets exigem atualizar e revisar o snapshot; divergências com a produção bloqueiam o deploy.
 - A verificação de concorrência não é atômica; manter um único processo de publicação.
 - Previews automáticos usam root `/production` e build validado, mas a publicação permanece fail-closed até validar um fluxo preview-only seguro.
-- Teste sem rede/credenciais: `node deploy.mjs --dry-run`, após build e verify.
-- Este registro dispara o primeiro teste real pelo fluxo corrigido. Conferir o resultado em Workers Builds; configuração salva não equivale a deploy concluído.
+- Testes sem rede/credenciais, após build: `node verify.mjs`, `node --test deploy.test.mjs` e `node deploy.mjs --dry-run`. O dry-run nunca inicia sessão nem contém JWT.
+- Writes são sequenciais, sem repetição automática. Em falha ou resultado incerto, conferir versões/deployments/build antes de tentar outra publicação. Falha após promoção exige inspeção; não se faz rollback cego sobre uma eventual alteração concorrente.
+- Conferir o teste real em Workers Builds; configuração salva e mocks aprovados não equivalem a deploy concluído.
 
 Fontes: [retenção de assets](https://developers.cloudflare.com/workers/static-assets/direct-upload/) e [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/).
 
@@ -72,11 +76,11 @@ Verificações concluídas: renderização do HTML, busca, redirecionamentos leg
 
 **Validação de 27/10:** prévia Cloudflare conferida visualmente em desktop e largura 390 px; cartazes principal e de inscrições carregaram; console da página do evento sem erros observados. A inicial publicada foi conferida visualmente. Não foi concluída a matriz de 320, 768 e 1440 px, nem a auditoria completa de teclado e contraste computado.
 
-## Procedimento original de deploy
+## Procedimento de deploy
 
 1. Reabrir esta branch e reconferir a versão em produção. Se tiver mudado, atualizar a base antes de publicar.
 2. Reconectar Cloudflare com escrita em Workers. Gerar os três módulos com `build.mjs`.
-3. Criar uma versão em `/accounts/{account_id}/workers/scripts/ius-gentium/versions`, em multipart com `worker.generated.mjs`, `event.mjs` e `media.generated.mjs`. Usar `main_module: worker.generated.mjs`, `compatibility_date: 2026-08-08`, `keep_assets: true` e binding `{name: ASSETS, type: assets}`. Preservar configuração de assets (`html_handling: none`, `not_found_handling: none`, Worker primeiro), observabilidade e todas as rotas.
+3. Executar `node deploy.mjs` exclusivamente pelo Workers Builds de main. O script registra o manifesto na sessão oficial de assets, envia apenas os buckets solicitados e cria a versão com `metadata.assets.jwt`, `main_module: worker.generated.mjs`, `compatibility_date: 2026-08-08` e binding `{name: ASSETS, type: assets}`. Preserva configuração de assets (`html_handling: none`, `not_found_handling: none`, Worker primeiro) e não modifica configurações do Worker, rotas ou DNS.
 4. Validar a URL de preview e as pendências visuais. Integrar a PR apenas quando o pacote estiver pronto para publicação no Worker; o merge isolado não publica no domínio.
 5. Publicar a versão aprovada em 100% do tráfego e conferir domínio apex e www, inicial, Anúncios, evento, inscrição, cartazes, busca e assets anteriores.
 6. Registrar commit, ID da nova versão e resultado. Rollback: versão `80b328d3-a4f9-4a06-b575-dcf3081cf052`, desde que ainda seja a base anterior correta.

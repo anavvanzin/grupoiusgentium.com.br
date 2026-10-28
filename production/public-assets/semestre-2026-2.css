@@ -1,0 +1,202 @@
+:root {
+  --ink: #0e0e0c;
+  --bone: #e9e0c9;
+  --bone-60: rgba(233, 224, 201, .6);
+  --oxblood: #8f1e1e;
+  --display: "Bodoni Moda", Georgia, serif;
+  --serif: "EB Garamond", Georgia, serif;
+  --sans: "Archivo", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--ink); }
+body { margin: 0; background: var(--ink); color: var(--bone); font-family: var(--serif); }
+p, h1, h2, h3, figure, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--bone); outline-offset: 5px; }
+a:hover { text-decoration: underline; text-underline-offset: 4px; }
+::selection { color: var(--bone); background: var(--oxblood); }
+picture, picture img { display: block; }
+.campaign-page { position: relative; max-width: 1440px; margin: 0 auto; padding-bottom: 0; isolation: isolate; overflow: clip; }
+.campaign-page::before { content: ""; position: absolute; inset: 40px; border: 1px solid var(--bone-60); pointer-events: none; z-index: -1; }
+.campaign-skip { position: fixed; z-index: 10; left: 16px; top: 16px; padding: 12px; background: var(--bone); color: var(--ink); transform: translateY(-200%); }
+.campaign-skip:focus { transform: translateY(0); }
+.campaign-crosshairs { position: absolute; inset: 10px 10px auto; display: flex; justify-content: space-between; pointer-events: none; }
+.campaign-crosshair { width: 32px; height: 32px; position: relative; }
+.campaign-crosshair img { position: absolute; top: -1px; left: 0; width: 53px; height: 33px; }
+.campaign-crosshairs-bottom { top: auto; bottom: 10px; }
+.campaign-header { padding: 60px 80px 40px; display: flex; flex-direction: column; gap: 24px; }
+.campaign-header-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.campaign-identity { display: flex; align-items: center; gap: 24px; }
+.campaign-edition { display: block; flex: 0 0 86px; height: 38px; font: italic 400 24px/1.1 var(--serif); }
+.campaign-group { width: 380px; font: italic 400 22px/normal var(--serif); }
+.campaign-institution { font: 500 22px/1.2 var(--sans); letter-spacing: 3.96px; color: var(--oxblood); }
+.campaign-rule { width: 100%; height: 0; position: relative; }
+.campaign-rule img { position: absolute; top: -1px; width: 100%; height: 1px; }
+.campaign-hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 480px; gap: 80px; padding: 40px 80px 96px; isolation: isolate; }
+.campaign-hero-left { position: relative; display: flex; flex-direction: column; gap: 24px; }
+.campaign-hero h1 { font: 900 220px/.8 var(--display); letter-spacing: -8.8px; }
+.campaign-question { display: flex; flex-direction: column; gap: 16px; padding-left: 10px; }
+.campaign-question > span { color: var(--oxblood); font: 400 18px/normal var(--sans); }
+.campaign-question p { max-width: 500px; font: italic 400 44px/1.1 var(--serif); }
+.campaign-slice { position: absolute; width: 28px; height: 520px; background: var(--oxblood); left: 35%; top: 20px; transform: rotate(22deg); pointer-events: none; z-index: -1; }
+.campaign-central-axis { position: absolute; left: 52%; top: 40px; width: 580px; height: 1px; transform: rotate(90deg); transform-origin: left center; pointer-events: none; opacity: .45; z-index: -1; }
+.campaign-hero-right { display: flex; flex-direction: column; justify-content: center; gap: 40px; padding: 0 0 40px; min-width: 0; }
+.campaign-introduction { display: flex; flex-direction: column; gap: 24px; }
+.campaign-eyebrow { font: 500 12px/1.5 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
+.campaign-introduction h2 { font: 400 clamp(36px, 3.4vw, 50px)/1.08 var(--serif); text-wrap: balance; }
+.campaign-opening-details { display: flex; flex-direction: column; gap: 16px; font: 400 22px/1.4 var(--serif); }
+.campaign-opening-details p + p { color: var(--bone-60); }
+@keyframes campaign-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.campaign-hero-left, .campaign-hero-right { animation: campaign-enter 650ms cubic-bezier(.22, 1, .36, 1) both; }
+.campaign-register { display: flex; flex-direction: column; gap: 8px; width: 100%; background: var(--oxblood); border: 1px solid var(--bone); padding: 20px; transition: transform 220ms cubic-bezier(.22, 1, .36, 1); text-align: center; font-family: var(--sans); line-height: normal; }
+.campaign-register:hover { transform: translateY(-2px); text-decoration: none; }
+.campaign-register:active { transform: scale(.98); }
+.campaign-register span { font-size: 15px; line-height: 1.4; font-weight: 600; }
+.campaign-section { padding: 80px; }
+.campaign-section-heading { display: flex; align-items: center; gap: 12px; font: 500 16px/normal var(--sans); letter-spacing: 1.6px; text-transform: uppercase; }
+.campaign-section-heading span { border: 1px solid var(--oxblood); color: var(--oxblood); padding: 4px 8px; font: 500 14px/normal var(--sans); letter-spacing: 0; }
+.campaign-module { padding-top: 96px; padding-bottom: 96px; position: relative; z-index: 2; display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 60px; }
+.campaign-module-meta { display: flex; flex-direction: column; gap: 20px; }
+.campaign-module-meta > p { color: var(--bone-60); font: italic 400 20px/normal var(--serif); }
+.campaign-module-copy { display: flex; flex-direction: column; gap: 32px; }
+.campaign-module-copy > p { font: 400 28px/1.45 var(--serif); }
+.campaign-practice, .campaign-meetings { display: flex; flex-direction: column; gap: 48px; }
+.campaign-practice-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+.campaign-practice-card { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; border: 1px solid var(--bone-60); padding: 32px; }
+.campaign-roman { color: var(--oxblood); font: 900 44px/normal var(--sans); }
+.campaign-practice-card h3 { font: 500 18px/normal var(--sans); letter-spacing: 1.8px; text-transform: uppercase; }
+.campaign-practice-card p { color: var(--bone-60); font: 400 18px/1.4 var(--serif); }
+.campaign-meetings-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.campaign-meeting { align-self: start; display: flex; flex-direction: column; gap: 20px; padding: 24px; border: 1px solid var(--bone-60); }
+.campaign-meeting-top { display: flex; align-items: center; justify-content: space-between; }
+.campaign-meeting-top > span { font: 900 36px/normal var(--display); }
+.meeting-dot, .meeting-dot img { width: 8px; height: 8px; }
+.meeting-rule, .organizers-rule { width: 100%; height: 0; position: relative; }
+.meeting-rule img, .organizers-rule img { position: absolute; top: -1px; width: 100%; height: 1px; }
+.campaign-meeting h3 { font: 400 22px/1.25 var(--serif); }
+.campaign-meeting p { font: 400 16px/1.4 var(--serif); color: var(--bone-60); }
+.campaign-meeting-date { font: 500 12px/1.4 var(--sans); color: var(--bone); }
+.campaign-logistics { display: grid; grid-template-columns: minmax(0, 600px) 120px minmax(0, 1fr); gap: 40px; align-items: center; }
+.campaign-logistics-left { display: flex; flex-direction: column; gap: 32px; }
+.campaign-schedule { display: flex; flex-direction: column; gap: 16px; background: var(--oxblood); padding: 32px; font: 500 18px/normal var(--sans); text-transform: uppercase; }
+.campaign-schedule p:first-child { font-size: 22px; letter-spacing: 2.64px; }
+.campaign-logistics-axis { width: 120px; height: 1px; }
+.campaign-organizers { display: flex; flex-direction: column; gap: 24px; padding-left: 24px; }
+.campaign-organizers h3 { margin-bottom: 8px; color: var(--oxblood); font: 400 14px/normal var(--sans); letter-spacing: 1.12px; text-transform: uppercase; }
+.campaign-coordinator { font: 500 22px/normal var(--serif); }
+.campaign-organizers ul { display: flex; flex-direction: column; gap: 4px; font: 400 18px/normal var(--serif); }
+.campaign-final { display: flex; flex-direction: column; align-items: center; gap: 48px; padding: 120px 80px; }
+.campaign-final-diagram { position: relative; display: flex; align-items: center; justify-content: center; width: 80px; height: 80px; }
+.campaign-final-diagram picture { flex: none; }
+.final-ring-large, .final-ring-large img { width: 80px; height: 80px; }
+.final-ring-small, .final-ring-small img { width: 40px; height: 40px; }
+.final-axis-h, .final-axis-h img { width: 100px; height: 1px; }
+.final-axis-v { width: 0; height: 100px; position: relative; }
+.final-axis-v img { position: absolute; left: 0; top: 0; width: 100px; height: 1px; transform: rotate(90deg); transform-origin: left center; }
+.campaign-final-copy { display: flex; flex-direction: column; gap: 16px; text-align: center; }
+.campaign-final-copy h2 { font: 900 54px/normal var(--display); letter-spacing: -1.08px; }
+.campaign-final-copy p { color: var(--bone-60); font: italic 400 20px/normal var(--serif); }
+.campaign-final .campaign-register { width: 400px; max-width: 100%; }
+.campaign-footer { display: flex; flex-direction: column; gap: 24px; padding: 40px 80px 60px; }
+.campaign-footer-row { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.campaign-footer-links { display: flex; flex-wrap: wrap; gap: 12px 32px; font: 500 16px/normal var(--sans); letter-spacing: 1.6px; }
+.campaign-footer-links a:first-child { color: var(--oxblood); }
+.campaign-footer-row > p { color: var(--bone-60); font: 400 13px/normal var(--sans); }
+.campaign-email { align-self: flex-start; font: 400 14px/normal var(--sans); color: var(--bone-60); overflow-wrap: anywhere; }
+@media (min-width: 768px) and (max-width: 1199px) {
+  .campaign-header, .campaign-section, .campaign-footer { padding-left: 56px; padding-right: 56px; }
+  .campaign-hero { gap: 40px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding-left: 56px; padding-right: 56px; }
+  .campaign-group { width: 240px; }
+  .campaign-institution { font-size: 16px; letter-spacing: 2px; }
+  .campaign-hero h1 { font-size: clamp(130px, 16vw, 220px); }
+  .campaign-question p { font-size: 36px; }
+  .campaign-slice { left: 33%; height: 360px; }
+  .campaign-central-axis { left: 50%; width: 440px; }
+  .campaign-module { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 32px; }
+  .campaign-practice-grid { gap: 20px; }
+  .campaign-practice-card { padding: 20px; }
+  .campaign-practice-card h3 { font-size: 15px; }
+  .campaign-meetings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .campaign-logistics { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px; }
+  .campaign-logistics-axis { display: none; }
+  .campaign-organizers { padding-left: 0; }
+  .campaign-final-copy h2 { font-size: 42px; }
+}
+@media (max-width: 767px) {
+  .campaign-page { border: 1px solid var(--bone-60); padding-top: 20px; padding-bottom: 40px; }
+  .campaign-page::before { display: none; }
+  .campaign-crosshairs { position: static; padding: 0 16px; }
+  .campaign-crosshair, .campaign-crosshair img { position: static; width: 24px; height: 24px; }
+  .campaign-crosshair-center { display: none; }
+  .campaign-crosshairs-bottom { padding-top: 16px; }
+  .campaign-header { padding: 16px 16px 24px; gap: 20px; }
+  .campaign-header-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .campaign-identity { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .campaign-edition { flex: none; width: 86px; height: 38px; }
+  .campaign-group { width: 100%; font-size: 18px; line-height: 1.3; }
+  .campaign-institution { font-size: clamp(17px, 5.64vw, 22px); letter-spacing: .18em; }
+  .campaign-hero { display: flex; flex-direction: column; gap: 36px; padding: 24px 16px 48px; }
+  .campaign-slice { left: 160px; top: 0; width: 18px; height: 235px; transform: rotate(22deg); z-index: -1; }
+  .campaign-central-axis { display: none; }
+  .campaign-hero-left { gap: 24px; }
+  .campaign-hero h1 { font-size: 100px; letter-spacing: -4px; }
+  .campaign-question { gap: 12px; padding-left: 0; }
+  .campaign-question > span { font-size: 16px; font-weight: 600; }
+  .campaign-question p { font-size: 32px; line-height: 1.15; }
+  .campaign-hero-right { gap: 24px; padding: 0; }
+  .campaign-introduction { gap: 16px; }
+  .campaign-introduction h2 { font-size: 36px; }
+  .campaign-opening-details { font-size: 20px; gap: 12px; }
+  .campaign-register { padding: 16px; }
+  .campaign-register span { font-size: 14px; letter-spacing: 0; }
+    .campaign-section { padding: 24px; }
+  .campaign-section-heading { font-size: 14px; letter-spacing: 1.4px; }
+  .campaign-section-heading span { font-size: 12px; }
+  .campaign-module { display: flex; flex-direction: column; gap: 24px; }
+  .campaign-module-meta { gap: 24px; }
+  .campaign-module-meta > p { font-size: 18px; line-height: 1.3; }
+  .campaign-module-copy { gap: 24px; }
+  .campaign-module-copy > p { font-size: 22px; line-height: 1.4; }
+  .campaign-practice, .campaign-meetings { gap: 24px; }
+  .campaign-practice-grid { grid-template-columns: 1fr; gap: 16px; }
+  .campaign-practice-card { gap: 12px; padding: 20px; }
+  .campaign-roman { font-size: 28px; }
+  .campaign-practice-card h3 { font-size: 14px; letter-spacing: 1.4px; }
+  .campaign-practice-card p { font-size: 16px; line-height: 1.4; }
+  .campaign-meetings-grid { grid-template-columns: 1fr; gap: 12px; }
+  .campaign-meeting { gap: 12px; padding: 16px; }
+  .campaign-meeting-top > span { font-size: 24px; }
+  .meeting-dot, .meeting-dot img { width: 6px; height: 6px; }
+  .campaign-meeting h3 { font-size: 20px; }
+  .campaign-meeting p { font-size: 16px; line-height: 1.35; }
+  .campaign-logistics { display: flex; flex-direction: column; align-items: stretch; gap: 24px; }
+  .campaign-logistics-left { gap: 24px; }
+  .campaign-logistics-axis { display: none; }
+  .campaign-schedule { padding: 20px; gap: 12px; font-size: 14px; }
+  .campaign-schedule p:first-child { font-size: 16px; font-weight: 600; letter-spacing: 0; }
+  .campaign-organizers { gap: 16px; padding: 0; }
+  .campaign-organizers h3 { font-size: 12px; font-weight: 600; letter-spacing: .96px; margin-bottom: 6px; }
+  .campaign-coordinator { font-size: 18px; }
+  .campaign-organizers ul { font-size: 16px; gap: 2px; }
+  .campaign-final { padding: 40px 16px; gap: 28px; }
+  .campaign-final-diagram { width: 60px; height: 60px; }
+  .final-ring-large, .final-ring-large img { width: 60px; height: 60px; }
+  .final-ring-small, .final-ring-small img { width: 30px; height: 30px; }
+  .final-axis-h, .final-axis-h img { width: 70px; height: 1px; }
+  .final-axis-v { height: 70px; }
+  .final-axis-v img { width: 70px; }
+  .campaign-final-copy { gap: 12px; }
+  .campaign-final-copy h2 { max-width: 326px; font-size: 24px; line-height: 1.1; letter-spacing: -.48px; align-self: center; }
+  .campaign-final-copy p { font-size: 16px; }
+  .campaign-final .campaign-register { width: 100%; }
+  .campaign-footer { gap: 20px; padding: 24px 16px 20px; }
+  .campaign-footer-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .campaign-footer-links { flex-direction: column; gap: 8px; font-size: 14px; letter-spacing: 1.4px; overflow-wrap: anywhere; }
+  .campaign-footer-row > p { font-size: 11px; line-height: 1.4; }
+  .campaign-email { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
