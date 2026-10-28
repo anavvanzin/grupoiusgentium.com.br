@@ -1,12 +1,34 @@
 # Divulgação Saberes França–Brasil — 21/10/2026
 
-## Estado da publicação
+## Recuperação e pipeline — 28/10/2026
+
+A publicação correta de 27/10 foi substituída por Workers Builds após o merge da PR #5. O comando sem configuração `npx wrangler deploy`, executado na raiz, detectou um site estático e removeu o roteador. O log registrou upload de arquivos de desenvolvimento, inclusive `.git`; isso não comprova vazamento de credenciais.
+
+Em 28/10 às 20:07:57 UTC, a versão `68fdf213-c1f7-4f87-8257-0d4f3ef51d81` foi restaurada em 100% (deployment `52a665eb-e733-4287-987b-4891701b876c`). Evento e homepage voltaram nos domínios apex e www. Os caminhos `/.git/HEAD` e `/production/baseline.mjs` exibiram a página 404 institucional.
+
+### Configuração de produção
+
+- Worker `ius-gentium`; branch `main`; root `/production`.
+- Build: `node build.mjs && node verify.mjs`.
+- Deploy: `node deploy.mjs`. Não usar autodetecção nem assets da raiz.
+- O script envia somente os três módulos compilados e usa o token já provisionado pelo Workers Builds. Não cria nem imprime credenciais.
+- Preserva `ASSETS`, `keep_assets: true` e Worker-first; testa preview, conteúdo, hashes dos assets gerais e do semestre, fontes inacessíveis e commit main atual antes de promover.
+- `keep_assets` não tem seletor de versão. Se os hashes não coincidirem após rollback, a promoção é bloqueada. Não ignorar esse teste: reconstruir os assets a partir da versão boa.
+- O repositório preserva o bundle, mas não todos os fontes TypeScript e assets originais.
+- A verificação de concorrência não é atômica; manter um único processo de publicação.
+- Previews automáticos usam root `/production` e build validado, mas a publicação permanece fail-closed até validar um fluxo preview-only seguro.
+- Teste sem rede/credenciais: `node deploy.mjs --dry-run`, após build e verify.
+- Este registro dispara o primeiro teste real pelo fluxo corrigido. Conferir o resultado em Workers Builds; configuração salva não equivale a deploy concluído.
+
+Fontes: [retenção de assets](https://developers.cloudflare.com/workers/static-assets/direct-upload/) e [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/).
+
+## Histórico da publicação
 
 **Publicado em 27/10/2026 às 00h15 (Brasília).** A conexão autorizada permitiu criar e implantar a versão `68fdf213-c1f7-4f87-8257-0d4f3ef51d81` em 100% do tráfego; deployment `e8eea9e6-38cc-400e-8f4e-22aced09bd7f`. O pacote corresponde ao commit `7e2e8686e72c2a3ad155ba45bc96ea23a9b4a43e`. A versão anterior era `80b328d3-a4f9-4a06-b575-dcf3081cf052`. Rotas e DNS não foram modificados; assets foram mantidos com `keep_assets` e binding ASSETS.
 
 **Rollback:** no Cloudflare, Workers & Pages → `ius-gentium` → Deployments, implantar a versão anterior `80b328d3-a4f9-4a06-b575-dcf3081cf052` em 100% do tráfego. Pela API, criar deployment com `strategy: percentage` e `versions: [{"version_id":"80b328d3-a4f9-4a06-b575-dcf3081cf052","percentage":100}]`. Conferir antes se essa continua sendo a versão de rollback adequada e depois validar o domínio e assets. Não usar `force` para ignorar bloqueios.
 
-O domínio público `grupoiusgentium.com.br` e o domínio `www` são atendidos pelo Cloudflare Worker **ius-gentium**. A produção consultada em 21/10/2026 usa a versão `80b328d3-a4f9-4a06-b575-dcf3081cf052`, publicada em 04/10/2026. Ela é diferente dos HTML antigos da raiz. Não há trigger de Workers Builds conectado a esse Worker. Os workflows GitHub Pages da raiz não atualizam essa produção.
+O domínio público `grupoiusgentium.com.br` e o domínio `www` são atendidos pelo Cloudflare Worker **ius-gentium**. A produção consultada em 21/10/2026 usa a versão `80b328d3-a4f9-4a06-b575-dcf3081cf052`, publicada em 04/10/2026. Ela é diferente dos HTML antigos da raiz. A inspeção antecedeu o trigger Workers Builds criado em 21/10 às 17:29 UTC; consulte a recuperação acima. Os workflows GitHub Pages da raiz não atualizam essa produção.
 
 `baseline.mjs` preserva o módulo compilado recuperado diretamente da produção. Os fontes TypeScript originais não estavam neste repositório; não foram reconstruídos por aproximação. SHA-256 do arquivo preservado: `aabdf608ca2cc33ee34bf5ac818297eeb0c66d2c829dde0d3cfcea8df755fdb7`.
 
